@@ -71,7 +71,7 @@ router.post('/signin', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
-    localStorage.setItem('token',JSON.stringify(token))
+     console.log(token);
     // save token in cookie
     res.cookie('token', token, {
       httpOnly: true,
