@@ -29,12 +29,12 @@ router.post('/signup', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
-
+    const isProd = process.env.NODE_ENV === 'production';
     // store token in cookie
     res.cookie('jwt', token, {
       httpOnly: true,
-      secure: true, // true in production
-      sameSite: 'none',
+      secure: isProd, // true in production
+      sameSite: isProd ? 'none' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
