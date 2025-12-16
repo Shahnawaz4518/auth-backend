@@ -18,12 +18,7 @@ app.use(cookieParser());
 //   next();
 // });
 
-app.use(
-  cors({
-    origin: ['http://localhost:4200', 'http://localhost:3000', 'http://localhost:5173', ",http://localhost:8080"],
-    credentials: true
-  })
-);
+app.use(cors());
 
 // Routes
 app.use('/auth', require('./routes/authRoutes'));
