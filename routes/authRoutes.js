@@ -41,7 +41,8 @@ router.post('/signup', async (req, res) => {
     res.status(201).json({
       _id: newUser._id,
       name: newUser.name,
-      email: newUser.email
+      email: newUser.email,
+      token: token
     });
 
   } catch (error) {
@@ -70,7 +71,7 @@ router.post('/signin', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
-
+    localStorage.setItem('token',JSON.stringify(token))
     // save token in cookie
     res.cookie('token', token, {
       httpOnly: true,
@@ -82,7 +83,8 @@ router.post('/signin', async (req, res) => {
     res.json({
       _id: user._id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      token: token
     });
 
   } catch (error) {
