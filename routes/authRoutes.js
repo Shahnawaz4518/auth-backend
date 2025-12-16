@@ -42,7 +42,6 @@ router.post('/signup', async (req, res) => {
       _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
-      token: token
     });
 
   } catch (error) {
@@ -73,7 +72,7 @@ router.post('/signin', async (req, res) => {
     );
      console.log(token);
     // save token in cookie
-    res.cookie('token', token, {
+    res.cookie('jwt', token, {
       httpOnly: true,
       secure: true, // true in production
       sameSite: 'none',
@@ -84,7 +83,7 @@ router.post('/signin', async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: token
+
     });
 
   } catch (error) {
