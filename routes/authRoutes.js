@@ -42,6 +42,7 @@ router.post('/signup', async (req, res) => {
       _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
+      token: token
     });
 
   } catch (error) {
@@ -83,6 +84,7 @@ router.post('/signin', async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      token: token
 
     });
 
