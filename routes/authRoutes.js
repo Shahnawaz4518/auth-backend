@@ -33,8 +33,8 @@ router.post('/signup', async (req, res) => {
     // store token in cookie
     res.cookie('jwt', token, {
       httpOnly: true,
-      secure: isProd, // true in production
-      sameSite: isProd ? 'none' : 'lax',
+      secure: true, // true in production
+      sameSite: 'none',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
